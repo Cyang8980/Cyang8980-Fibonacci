@@ -1,3 +1,5 @@
+import java.util.HashMap;
+import java.util.Map;
 
 public class Fibonacci {
     /**
@@ -15,6 +17,19 @@ public class Fibonacci {
      * @return the nth number of fibonacci sequence.
      */
     public int fib(int n){
-        return 0;
+        Map<Integer, Integer> memo = new HashMap<>();
+
+        if (n <= 1) {
+            return n;
+        }
+
+        if (memo.containsKey(n)) {
+            return memo.get(n);
+        }
+
+        int result = fib(n - 1) + fib(n - 2);
+        memo.put(n, result);
+
+        return result;
     }
 }
